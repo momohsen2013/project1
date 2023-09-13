@@ -8,11 +8,7 @@ jobs:
   get_release_name:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.EXTERNAL_REPO_PAT }}
-          repository: momohsen2013/go_webapp
-          ref: main
+
           
 
 
@@ -22,10 +18,12 @@ jobs:
         run: |
           release_name=$(gh release list |head -1 |awk '{print $1}')
           echo  "$release_name"
-          
+          echo "cloning app repo"
+          git clone https://momohsen2013:${{ secrets.EXTERNAL_REPO_PAT }}@github.com/${{ github.repository_owner }}/go_webapp.git
+
           git config --global user.email "mohamed.mohsen@foodji.com"
           git config --global user.name "momohsen2013"
-          
+          cd go_webapp
           git checkout -b fix_gomod_version
           sed -i 's|github.com/Foodji/common v[0-9].*.*|github.com/Foodji/common "$release_name" |' go.mod          
           git add .
@@ -35,3 +33,4 @@ jobs:
       
      
  
+          
