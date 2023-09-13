@@ -19,7 +19,7 @@ jobs:
           release_name=$(gh release list |head -1 |awk '{print $1}')
           echo  "$release_name"
           echo "cloning app repo"
-          git clone https://momohsen2013:${{ secrets.EXTERNAL_REPO_PAT }}@github.com/${{ github.repository_owner }}/go_webapp.git
+          git clone https://momohsen2013:${{ secrets.EXTERNAL_REPO_PAT }}@github.com/momohsen2013/go_webapp.git
 
           git config --global user.email "mohamed.mohsen@foodji.com"
           git config --global user.name "momohsen2013"
