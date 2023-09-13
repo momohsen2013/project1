@@ -22,9 +22,9 @@ jobs:
           
       - name: Set up GitHub CLI
         run: |
-          echo ${{ secrets.GH_TOKEN }} | gh auth login --with-token
-        env:
-          GH_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}
+          which gh
+          gh repo list
+
 
 
         
