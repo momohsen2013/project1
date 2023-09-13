@@ -19,9 +19,8 @@ jobs:
       - name: change go.mod using sed && pull req 
         env:
           GH_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}
-          release_name: ${{ github.event.release.tag_name }}
         run: |
-          echo  "${{ github.event.release.tag_name }}"
+          release_name=gh release list |head -1 |awk '{print $1}'
           echo  "$release_name"
           
           git config --global user.email "mohamed.mohsen@foodji.com"
