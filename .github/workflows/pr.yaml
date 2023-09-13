@@ -15,6 +15,5 @@ jobs:
       - name: change go.mod using sed && pull req 
         run: |
           gh auth login --with-token ${{ secrets.EXTERNAL_REPO_PAT }}
-          release_name=$(gh release list |head -1 |awk '{print $1}')
-          echo  "$release_name"
+
         
