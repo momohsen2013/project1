@@ -1,6 +1,6 @@
 name: workflow_01
 on:
-  push:
+  #push:
   workflow_dispatch:
 
 jobs:
