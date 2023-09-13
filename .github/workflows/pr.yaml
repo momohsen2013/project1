@@ -20,7 +20,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}
         run: |
-          release_name=gh release list |head -1 |awk '{print $1}'
+          release_name=$(gh release list |head -1 |awk '{print $1}')
           echo  "$release_name"
           
           git config --global user.email "mohamed.mohsen@foodji.com"
