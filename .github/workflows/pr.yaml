@@ -19,15 +19,17 @@ jobs:
       - name: change go.mod using sed && pull req 
         env:
           GH_TOKEN: ${{ github.token }}
+          release_name: ${{ github.event.release.tag_name }}
         run: |
           git config --global user.email "mohamed.mohsen@foodji.com"
           git config --global user.name "momohsen2013"
-          release_name=${{ github.event.release.tag_name }}
+          
           git checkout -b fix_gomod_version
           sed -i 's|github.com/Foodji/common v[0-9].*.*|github.com/Foodji/common $release_name|' go.mod          
           git add .
           git commit  -m "chore: (updating webapp release version; no production code change)"  
           git push  --set-upstream origin fix_gomod_version --force
-          gh pr create --base main --head fix_gomod_version --fill
+          gh pr create -B main -H fix_gomod_version --title 'Merge branch_to_merge into base_branch' 
       
      
+ 
