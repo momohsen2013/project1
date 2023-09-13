@@ -16,7 +16,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}
         run: |
-          gh auth login --token ${{ secrets.EXTERNAL_REPO_PAT }}
+          gh auth login --with-token ${{ secrets.EXTERNAL_REPO_PAT }}
           release_name=$(gh release list |head -1 |awk '{print $1}')
           echo  "$release_name"
           echo "cloning app repo"
