@@ -22,17 +22,9 @@ jobs:
           git config --global user.name "momohsen2013"
           release_name=${{ github.event.release.tag_name }}
           git checkout -b fix_gomod_version
-          sed -i 's|github.com/Foodji/common v[0-9].*.*|github.com/Foodji/common $release_name|' go.mod
-
-
+          sed -i 's|github.com/Foodji/common v[0-9].*.*|github.com/Foodji/common $release_name|' go.mod           git add .
+          git commit  -m "chore: (updating webapp release version; no production code change)"  
+          git push  --set-upstream origin fix_gomod_version --force
+          gh pr create --base main --head fix_gomod_version --fill
       
-      
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
-        with:
-          commit-message: update authors
-          title: Update AUTHORS
-          body: Credit new contributors by updating AUTHORS
-          branch: fix_gomod_version
-          base: main
-          token: ${{ secrets.EXTERNAL_REPO_PAT }}
+     
