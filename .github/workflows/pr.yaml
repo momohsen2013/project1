@@ -34,4 +34,5 @@ jobs:
           title: Update AUTHORS
           body: Credit new contributors by updating AUTHORS
           branch: fix_gomod_version
+          base: main
           
