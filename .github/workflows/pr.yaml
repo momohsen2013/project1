@@ -15,11 +15,17 @@ jobs:
           sudo apt-get update
           sudo apt-get install gh
     
-      - name: Debug
+      - name: Set up GitHub CLI
         run: |
-          gh auth login --with-token < ${{ secrets.EXTERNAL_REPO_PAT }}"
-          gh --version
-          
+          echo ${{ secrets.GITHUB_TOKEN }} | gh auth login --with-token
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Clone private repository
+        run: |
+          gh repo clone momohsen2013/go_webapp
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Set up GitHub CLI
         run: |
           which gh
