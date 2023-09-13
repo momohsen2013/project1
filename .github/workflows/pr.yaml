@@ -24,6 +24,8 @@ jobs:
         run: |
           which gh
           gh repo list
+        env:
+           GH_TOKEN: ${{ github.token }}
 
 
 
