@@ -10,10 +10,11 @@ jobs:
     steps:
 
           
-
-
-      - name: change go.mod using sed && pull req 
+      - name: Set up GitHub CLI
         run: |
-          gh auth login --with-token ${{ secrets.EXTERNAL_REPO_PAT }}
+          echo ${{ secrets.GH_TOKEN }} | gh auth login --with-token
+        env:
+          GH_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}
+
 
         
