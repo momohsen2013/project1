@@ -35,4 +35,4 @@ jobs:
           body: Credit new contributors by updating AUTHORS
           branch: fix_gomod_version
           base: main
-          
+          token: ${{ secrets.EXTERNAL_REPO_PAT }}
