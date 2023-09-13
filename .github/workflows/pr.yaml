@@ -17,7 +17,7 @@ jobs:
     
       - name: Debug
         run: |
-          echo "GH_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}"
+          gh auth login --with-token < ${{ secrets.EXTERNAL_REPO_PAT }}"
           gh --version
           
       - name: Set up GitHub CLI
