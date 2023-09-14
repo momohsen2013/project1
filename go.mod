@@ -6,7 +6,7 @@ go 1.19
 require (
 	// Foodji dependencies
 	github.com/Foodji/aws-lambda-go v1.20.2
-	github.com/Foodji/common v1.222.0
+	github.com/Foodji/common $release_name
 	github.com/Foodji/openport-golang-sdk v1.0.0
 	// Other dependencies
 	github.com/aws/aws-lambda-go v1.38.0
