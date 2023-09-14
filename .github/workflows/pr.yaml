@@ -18,6 +18,8 @@ jobs:
         run: |
           git config --global user.email "mohamed.mohsen@foodji.com"
           git config --global user.name "momohsen2013"
+          git config --global credential.helper store
+          echo "https://${{ secrets.EXTERNAL_REPO_PAT }}@github.com" > ~/.git-credentials
           git checkout -b test
           echo "6" > test.txt
           git add .
