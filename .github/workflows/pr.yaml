@@ -14,7 +14,7 @@ jobs:
 
       - name: pull req
         env:
-          pat: ${{ secrets.EXTERNAL_REPO_PAT }}
+          PAT_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}
         run: |
           git config --global user.email "mohamed.mohsen@foodji.com"
           git config --global user.name "momohsen2013"
