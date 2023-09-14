@@ -12,9 +12,11 @@ jobs:
     steps:
 
       - name: pull req
+        env:
+          pat: ${{ secrets.EXTERNAL_REPO_PAT }}
         run: |
           echo "cloning app repo"
-          git clone https://momohsen2013:${{ secrets.EXTERNAL_REPO_PAT }}@github.com/momohsen2013/project1.git
+          git clone https://momohsen2013:$pat@github.com/momohsen2013/project1.git
           pwd
 
 
