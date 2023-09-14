@@ -8,6 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: fix_gomod_version
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v5
+      - name: Check outputs
+        if: ${{ steps.cpr.outputs.pull-request-number }}
+        run: |
+          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
+          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
 
 
 
