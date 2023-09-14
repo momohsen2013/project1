@@ -1,21 +1,15 @@
 name: pull req
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
+  push:
+    branches: 
+      fix_gomod_version
 jobs:
   createPullRequest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.EXTERNAL_REPO_PAT }}
-          repository: momohsen2013/go_webapp
-          ref: main
-
-      - name: Make changes to pull request
-        run: |
-          git checkout -b fix_gomod_version
-          date +%s > report.txt
 
       - name: Create Pull Request
         id: cpr
@@ -41,9 +35,6 @@ jobs:
             automated pr
           assignees: peter-evans
           reviewers: peter-evans
-          team-reviewers: |
-            developers
-            qa-team
           milestone: 1
           draft: false
 
