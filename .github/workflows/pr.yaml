@@ -10,14 +10,19 @@ jobs:
       contents: read
       pull-requests: write
     steps:
+      - uses: actions/checkout@v3
 
       - name: pull req
         env:
           pat: ${{ secrets.EXTERNAL_REPO_PAT }}
         run: |
-          echo "cloning app repo"
-          git clone https://momohsen2013:$pat@github.com/momohsen2013/project1.git
-          pwd
+          git checkout -b test
+          echo "6" > test.txt
+          git add .
+          git commit -m "test" test.txt
+          git push 
+          gh pr create --base main --head test --fill
+ 
 
 
 
