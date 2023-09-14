@@ -22,7 +22,7 @@ jobs:
           echo "6" > test.txt
           git add .
           git commit -m "test" test.txt
-          git push 
+          git push --set-upstream origin test
           gh pr create --base main --head test --fill
  
 
