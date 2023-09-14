@@ -20,7 +20,7 @@ jobs:
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: origin/fix_gomod_version
+          branch: fix_gomod_version
           base: main
           delete-branch: true
           title: '[Example] Update report'
