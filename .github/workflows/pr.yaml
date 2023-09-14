@@ -10,7 +10,7 @@ jobs:
       contents: read
       pull-requests: write
     steps:
-      - uses: actions/checkout@v3
+
       - name: pull req
         run: |
           echo "cloning app repo"
