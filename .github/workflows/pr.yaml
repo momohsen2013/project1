@@ -16,6 +16,8 @@ jobs:
         env:
           pat: ${{ secrets.EXTERNAL_REPO_PAT }}
         run: |
+          git config --global user.email "mohamed.mohsen@foodji.com"
+          git config --global user.name "momohsen2013"
           git checkout -b test
           echo "6" > test.txt
           git add .
