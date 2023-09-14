@@ -11,22 +11,11 @@ jobs:
       pull-requests: write
     steps:
       - uses: actions/checkout@v3
-
       - name: pull req
-        env:
-          PAT_TOKEN: ${{ secrets.EXTERNAL_REPO_PAT }}
         run: |
-          git config --global user.email "mohamed.mohsen@foodji.com"
-          git config --global user.name "momohsen2013"
-          git config --global credential.helper store
-          echo "https://${{ secrets.EXTERNAL_REPO_PAT }}@github.com" > ~/.git-credentials
-          git checkout -b test
-          echo "6" > test.txt
-          git add .
-          git commit -m "test" test.txt
-          git push --set-upstream origin test
-          gh pr create --base main --head test --fill
- 
+          echo "cloning app repo"
+          git clone https://momohsen2013:${{ secrets.EXTERNAL_REPO_PAT }}@github.com/momohsen2013/project1.git
+          pwd
 
 
 
