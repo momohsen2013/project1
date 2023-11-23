@@ -30,3 +30,20 @@ jobs:
       if: always()
       with:
           sarif_file: 'trivy-results.sarif'
+
+    # build docker file
+    - name: Build an image from Dockerfile
+      run: |
+          docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
+
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@master
+      with:
+          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy.sarif'
+      
+    - name: Upload Trivy scan results to GitHub Security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+          sarif_file: 'trivy.sarif'
