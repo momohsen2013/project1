@@ -1,0 +1,16 @@
+name: Example workflow for Golang using Snyk
+on: 
+  push:
+  workflow_dispatch:
+    
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/golang@master
+        env:
+          SNYK_TOKEN: 00aa961c-d939-4b3f-b938-46a03b6d68a3
+        with:
+          args: --severity-threshold=high
