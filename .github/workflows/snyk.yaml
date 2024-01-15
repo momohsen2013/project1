@@ -12,5 +12,4 @@ jobs:
         uses: snyk/actions/golang@master
         env:
           SNYK_TOKEN: 00aa961c-d939-4b3f-b938-46a03b6d68a3
-        with:
-          args: --severity-threshold=high
+  
