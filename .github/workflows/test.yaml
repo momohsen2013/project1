@@ -15,9 +15,11 @@ jobs:
 
     steps:
       - name: Search for pattern in branch name and extract ticket number (FJI-XXXX)
+        env:
+         BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
         id: pattern_search
         run: |
-          echo ${GITHUB_REF##*/}|grep -Eo 'FJI-\d+'
+          echo env.BRANCH_NAME
           ticket_number=$(echo "${{ github.head_ref }}" | grep -Eo 'FJI-\d+' || echo "")
           echo $ticket_number
           if [ -n "$ticket_number" ]; then
