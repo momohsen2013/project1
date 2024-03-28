@@ -18,6 +18,7 @@ jobs:
         id: pattern_search
         run: |
           ticket_number=$(echo "${{ github.head_ref }}" | grep -Eo 'FJI-\d+' || echo "")
+          echo $ticket_number
           if [ -n "$ticket_number" ]; then
             echo "Ticket number found: $ticket_number"
           else
