@@ -20,6 +20,7 @@ jobs:
         id: pattern_search
         run: |
           echo "$BRANCH_NAME"
+          echo  "$BRANCH_NAME" | grep -Eo 'FJI-\d+'
           ticket_number=$(echo  "$BRANCH_NAME" | grep -Eo 'FJI-\d+' || echo "")
     
           if [ -n "$ticket_number" ]; then
