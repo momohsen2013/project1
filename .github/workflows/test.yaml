@@ -20,7 +20,7 @@ jobs:
         id: pattern_search
         run: |
           echo "$BRANCH_NAME"
-          echo "$BRANCH_NAME" | cut -d'/' -f2 | sed 's/-.*//'
+          echo "$BRANCH_NAME" | cut -d'/' -f2 | cut -d'-' -f1,2
           ticket_number=$(echo  "$BRANCH_NAME" | grep -Eo 'FJI-\d+' || echo "")
     
           if [ -n "$ticket_number" ]; then
