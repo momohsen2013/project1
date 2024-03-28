@@ -19,9 +19,9 @@ jobs:
          BRANCH_NAME: ${{ github.head_ref || github.ref_name }} 
         id: pattern_search
         run: |
-          echo env.BRANCH_NAME
+          echo "$BRANCH_NAME"
           ticket_number=$(echo "${{ github.head_ref }}" | grep -Eo 'FJI-\d+' || echo "")
-          echo $ticket_number
+    
           if [ -n "$ticket_number" ]; then
             echo "Ticket number found: $ticket_number"
           else
