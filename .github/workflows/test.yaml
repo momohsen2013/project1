@@ -1,0 +1,34 @@
+name: Unit Tests
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    tags:
+      - "*"
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch of Common repo"
+        required: true
+        default: "master"
+        type: choice
+        options:
+          - master
+          - develop
+jobs:
+  # TEST
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Search for pattern in branch name and extract ticket number (FJI-XXXX)
+        id: pattern_search
+        run: |
+          ticket_number=$(echo "${{ github.head_ref }}" | grep -Eo 'FJI-\d+' || echo "")
+          if [ -n "$ticket_number" ]; then
+            echo "Ticket number found: $ticket_number"
+          else
+            echo "Ticket number not found."
+          fi  
+          echo "ticket_number=$ticket_number" >> "$GITHUB_OUTPUT"
